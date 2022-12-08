@@ -11,8 +11,6 @@ config.vm.define "admin1" do |admin1|
     admin1.vm.box = "ubuntu/focal64"
     admin1.vm.network "private_network", ip: "192.168.33.10"
     admin1.vm.network "forwarded_port", guest: 80, host: 8888
-
-
     admin1.vm.provider "virtualbox" do |vb|
       vb.name = "adminmisha"
       vb.gui = false
