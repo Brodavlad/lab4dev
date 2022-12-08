@@ -6,6 +6,18 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
+config.vm.define "admin1" do |admin1|
+    admin1.vm.hostname = "admin1"
+    admin1.vm.box = "ubuntu/focal64"
+    admin1.vm.network "private_network", ip: "192.168.33.10"
+    admin1.vm.network "forwarded_port", guest: 80, host: 8888
+
+
+    admin1.vm.provider "virtualbox" do |vb|
+      vb.name = "adminmisha"
+      vb.gui = false
+      vb.memory = "1024"
+    end
 
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
@@ -13,7 +25,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ubuntu/focal64"
+  # config.vm.box = "ubuntu/focal64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -73,4 +85,5 @@ Vagrant.configure("2") do |config|
     sudo usermod -a -G adminuser poweruser
     sudo ln -s /etc/mtab /home/poweruser/mylink
   SHELL
+  end
 end
