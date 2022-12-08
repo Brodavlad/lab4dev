@@ -12,7 +12,7 @@ config.vm.define "admin1" do |admin1|
     admin1.vm.network "private_network", ip: "192.168.33.10"
     admin1.vm.network "forwarded_port", guest: 80, host: 8888
     admin1.vm.provider "virtualbox" do |vb|
-      vb.name = "adminmisha"
+      vb.name = "broda"
       vb.gui = false
       vb.memory = "1024"
     end
